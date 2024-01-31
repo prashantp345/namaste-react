@@ -56,7 +56,31 @@ import { var_name } from 'path/to/file';
 - Install @reduxjs/toolkit and react-redux
 - Build our store 
 - Connect our store to our app
+- create a Slice (cartSlice)
+- Dispatch(action)
+- Selector(subscribe to the store)
 
+
+## Types of testing (Developer)
+- Unit Testing (Test your reatc apl in isolation)
+- Integration (Test a flow where multiple component envolve and talk to each other )
+- End to End testing - e2e testing
+ (Full flow of user ..as soon as user start using app till leave app)
+
+## Setting up tesing in our APP
+- Install Reacr testing Library
+- Installed jest
+- Installed Babel dependencies
+- Configurare Babel
+- Configure Parcel Config file to disable babel transpilation
+- Jest configuration 
+   --- Jest --- npx jest --init
+   - Install jsdom library
+- Install @babel/preset-react - to make JSX work in test cases
+- Include @babel/preset-react inside my babel-config
+- npm i -D @testing-library/jest-dom
+
+## dundar  __test__ extention resurve 
 
  /** 
 <div id="parent">
