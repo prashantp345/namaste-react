@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect  } from 'react';
 import { useSelector } from 'react-redux';
-import { CDN_URL, RESTRO_MENU_URL } from "../utils/constant";
 import Shimmer from './Shimmer';
 import useRestaurantMenu from '../utils/useRestaurantMenu';
 import RestaurantCategory from './RestaurantCategory';
