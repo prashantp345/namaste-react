@@ -1,10 +1,10 @@
 import RestrocardCard, { withPromotedLabel } from "./RestaurantCard";
-import restaurants from "../utils/mockData";
 import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { restaurantListObj } from "../utils/data/restaurantList";
 
 const Body = () => {
     const [ lisOfRestro, setListOfRestro ] = useState([]);
@@ -21,8 +21,7 @@ const Body = () => {
     },[]);
 
     const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.8761653&lng=75.3433139&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-        const json = await data.json();
+        const json = restaurantListObj;
         //console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
         //Optional Chaining data?.card.?...
         setListOfRestro(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
