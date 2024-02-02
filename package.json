@@ -4,7 +4,6 @@
   "description": "React JS project",
   "scripts": {
     "start": "parcel index.html",
-    "start-react": "react-scripts start",
     "build": "parcel build index.html",
     "test": "jest",
     "watch-test": "jest --watch"
@@ -42,7 +41,6 @@
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.21.2",
-    "react-scripts": "^5.0.1"
   },
   "browsersList": [
     "last 2 versions"
