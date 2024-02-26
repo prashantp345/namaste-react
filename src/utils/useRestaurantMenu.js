@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { RESTRO_MENU_URL } from "../utils/constant";
+import { restroObj } from  "./data/restroMockData";
 
 const useRestaurantMenu = (resId) => {
 
@@ -7,15 +8,14 @@ const useRestaurantMenu = (resId) => {
   
     useEffect(()=> {
         fetchRestaurantMenu();
-    }, [])
+    }, []);
 
     const fetchRestaurantMenu = async () => {
-        const restroMenuData = await fetch(RESTRO_MENU_URL+resId);
-        const json = await restroMenuData.json();
-        setRestaurantMenu(json?.data); //Optional Chaning
+        const restroMenuData = restroObj[resId]; 
+        //await fetch(RESTRO_MENU_URL+resId);
+        //const json = await restroMenuData.json();
+        setRestaurantMenu(restroMenuData?.data); //Optional Chaning
     }
-
     return restaurantMenu;
 }
-
 export default useRestaurantMenu;

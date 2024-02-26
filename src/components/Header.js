@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+//import { useState, useContext } from "react";
 import { LOGO_URL } from "../utils/constant";
 import { Link } from 'react-router-dom'
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -8,11 +8,11 @@ import { useSelector } from "react-redux";
 const Header = () => {
 
     //let updateLoginStatus = "Login";
-    const [ updateLoginStatus, setUpdateLoginStatus ] = useState("Login");
+    //const [ updateLoginStatus, setUpdateLoginStatus ] = useState("Login");
 
     const onlineStatus = useOnlineStatus();
 
-    const loggedInUserData = useContext(UserContext);
+    //const loggedInUserData = useContext(UserContext);
 
     //Subscribing to the store using a selector
     const cartItems = useSelector((store)=> store.cart.items);
@@ -32,19 +32,19 @@ const Header = () => {
     }
 
     return(
-        <div className='flex justify-between bg-pink-100 sm:bg-yellow-100 lg:bg-green-100 shadow-lg m-2'>
-            <div className="m-2">
-                <Link to="/"><img className="w-20" alt="Logo Image" src={ LOGO_URL }></img></Link>
+        <div className='flex justify-between bg-pink-100 sm:bg-yellow-100 lg:bg-green-100 shadow-lg md:w-auto w-fit md:m-2 m-0 md:text-base text-[10px]'>
+            <div className="md:m-2 m-0">
+                <Link to="/"><img className="md:w-20 w-[4rem]" alt="Logo Image" src={ LOGO_URL }></img></Link>
             </div>
             <div className='flex items-center'>
-                <ul className="flex p-4 m-4">
-                    <li className="px-4">Online Status: <span style={ onlineStatus? greenTextColor: redTextColor }
+                <ul className="flex md:p-4 p-1 md:m-4 m-0">
+                    <li className="md:px-4 px-2 md:block hidden">Online Status: <span style={ onlineStatus? greenTextColor: redTextColor }
                         className="font-bold">{ onlineStatus ? "ON" : "OFF" }</span></li>
-                    <li className="px-4"><Link to="/">Home</Link></li>
-                    <li className="px-4"><Link to="about">About Us</Link></li>
-                    <li className="px-4"><Link to="contact"> Contact Us </Link></li>
-                    <li className="px-4"><Link to="/grocery"> Grocery</Link></li>
-                    <li className="px-4 font-bold"><Link to="/cart"> Cart - ({getCartItemsCount()} item)</Link></li>
+                    <li className="md:px-4 px-2"><Link to="/">Home</Link></li>
+                    <li className="md:px-4 px-2"><Link to="about">About Us</Link></li>
+                    <li className="md:px-4 px-2"><Link to="contact"> Contact Us </Link></li>
+                    <li className="md:px-4 px-2"><Link to="/grocery"> Grocery</Link></li>
+                    <li className="md:px-4 px-2 font-bold"><Link to="/cart"> Cart - ({getCartItemsCount()} item)</Link></li>
                     
                     {/* <button className="login" name="Login" onClick={()=>{
                         setUpdateLoginStatus(updateLoginStatus == "Login" ? "Logout" : "Login");

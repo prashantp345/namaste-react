@@ -46,21 +46,21 @@ const ItemList = ({ items }) => {
                         <p className="text-xs">{ item.card.info.description }</p>
                     </div>
                     <div className="w-3/12 p-2 justify-between">
-                        <div className="absolute bg-white mt-[4.5rem] ml-[2rem]">
+                        <div className="absolute bg-white md:mt-[4.5rem] mt-[3rem] md:ml-[2rem] ml-[0rem]">
                             { cartItems.find((element) => element.card.info.id === item.card.info.id) ? 
-                                (<div className="pl-['2px'] pr-['2px'] p-2 border border-gray-400 bg-gray-200 shadow-xl m-auto font-bold rounded-sm hover:shadow-2xl"
+                                (<div className="pl-['2px'] pr-['2px'] md:p-2 p-[0.2rem] border border-gray-400 bg-gray-200 shadow-xl m-auto font-bold rounded-sm hover:shadow-2xl"
                                     > 
                                     <span className="font-bold p-1 m-1 cursor-pointer" onClick={() => handleDeleteClick(item)}> - </span> 
                                     <span>{itemList(item.card.info.id)}</span>
                                     <span className="font-bold p-1 m-1 cursor-pointer" onClick={() => handleAddClick(item)}> + </span></div>) : 
-                                (<button className="px-[23px] py-2 border border-gray-400 bg-gray-200 shadow-xl m-auto font-bold rounded-sm hover:shadow-2xl"
+                                (<button className="md:px-[23px] px-[10px] py-2 border border-gray-400 bg-gray-200 shadow-xl m-auto font-bold rounded-sm hover:shadow-2xl"
                                     onClick={()=> addItemToCart(item)}>ADD
                                 </button>)
                              }
                         </div>
-                        <div className="w-36">
+                        <div className="md:w-36 w-12">
                             <img src={item?.card?.info?.imageId && CDN_URL+item?.card?.info?.imageId} alt="No Picture" 
-                                width="144" className={item?.card?.info?.imageId?"h-24":"h-24 mt-8"}></img>
+                                width="144" className={item?.card?.info?.imageId?"md:h-24 h-16":"md:h-24 h-16 mt-8"}></img>
                         </div>
                     </div>
                 </div> 

@@ -34,17 +34,17 @@ const cart = () => {
     }
    
     return (
-        <div className="text-center m-10 p-10">
-            <h1 className="text-2xl font-bold">Cart</h1>
-            <div className="w-6/12 m-auto">
-                { cartItems.length === 0 ? <h1 className="p-2 m-2 text-xl">Your cart is empty. Add items to the cart!</h1>
+        <div className="text-center md:m-10 m-2 md:p-10 p-2">
+            <h1 className="md:text-2xl text-base font-bold">Cart</h1>
+            <div className="md:w-6/12 w-12/12 m-auto md:text-base text-xs">
+                { cartItems.length === 0 ? <h1 className="p-2 m-2 md:text-xl text-xs">Your cart is empty. Add items to the cart!</h1>
                     : <button className="p-2 m-2 bg-black text-white rounded-lg" 
                         onClick={() => dispatch(clearCart()) }>Clear Cart</button>}    
                 <ItemList items={filterCartData()} />
             </div>
             { cartItems.length !== 0 &&
-                <div className="font-bold p-2 m-4 text-xl">
-                    <hr className="w-6/12 m-auto"></hr>
+                <div className="font-bold p-2 m-4 md:text-xl text-xs">
+                    <hr className="md:w-6/12 w-10/12 m-auto"></hr>
                     <h2 className="m-3">Bill Details - {getCartItemsCount()} Items | Total ₹ {totalCartPrice()} </h2>
                 </div>
             }

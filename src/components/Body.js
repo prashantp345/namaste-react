@@ -35,20 +35,21 @@ const Body = () => {
     
     return (lisOfRestro.length === 0) ? <Shimmer/> : (
         <div className='body'>
-            <div className="flex justify-between">
-                <div className="m-4 p-4">
-                    <input type="text" className="border border-solid border-black" value={ searchText } onChange={(e)=> {
+            <div className="flex justify-between md:text-base text-[9px]">
+                <div className="md:mx-4 my-4 mx-2 md:p-4 p-2">
+                    <input type="text" className="border border-solid border-black" value={ searchText } 
+                        placeholder="Search restaurants and food" onChange={(e)=> {
                         setSearchText(e.target.value);
                     }}></input>
-                    <button className="px-4 py-2 bg-green-100 m-4 rounded-lg font-bold" onClick={()=>{
+                    <button className="px-4 py-2 bg-green-100 md:my-4 my-2 rounded-lg font-bold" onClick={()=>{
                         setFilteredRestro(lisOfRestro.filter((data)=> {
                             return data.info.name.toLowerCase().includes(searchText.toLowerCase());
                         }))
                     }}>Serach</button>
                 </div>
                 <div>
-                    <div className="m-4 p-4 flex items-center">
-                        <button className="px-4 py-2 bg-gray-100 rounded-lg font-bold" onClick={()=> {
+                    <div className="md:m-4 m-2 md:p-4 p-2 flex items-center">
+                        <button className="md:px-4 px-2 py-2 bg-gray-100 rounded-lg font-bold" onClick={()=> {
                             // Filter logic here
                             const FilteredListOfRestro = lisOfRestro.filter(
                                 (restro)=> restro.info.avgRating > 4.3
@@ -56,7 +57,7 @@ const Body = () => {
                             setFilteredRestro(FilteredListOfRestro);
                         }}>Top Rated Restaurant</button>
 
-                        <button className="px-4 py-2 bg-gray-100 rounded-lg font-bold m-4" onClick={()=> {
+                        <button className="md:px-4 px-2 py-2 bg-gray-100 rounded-lg font-bold md:m-4 m-1" onClick={()=> {
                             setFilteredRestro(lisOfRestro);
                         }}>Clear Filter</button>
                     </div>
@@ -68,7 +69,7 @@ const Body = () => {
                         value={loggedInUser} onChange={(e) => setUserName(e.target.value)} />
                 </div> */}
             </div>
-            <div className='flex flex-wrap'>
+            <div className='flex flex-wrap w-fit'>
                 { 
                     FilteredRestro.map(restro => (
                         <Link to={"/restaurant/"+ restro.info.id } key={restro.info.id}>

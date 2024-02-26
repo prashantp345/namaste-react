@@ -17,12 +17,12 @@ const Restaurantmenu = () => {
 
     if(!restaurantMenu) return <Shimmer/>;
 
-    const { name, costForTwoMessage, cuisines, avgRating, city, cloudinaryImageId } = restaurantMenu?.cards[0]?.card?.card?.info;
-    const { itemCards } = restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+    const restro = restaurantMenu?.cards.filter((c) => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.Restaurant");
+    const { name, costForTwoMessage, cuisines, avgRating, city, cloudinaryImageId } = restro[0]?.card?.card?.info;
+    //const { itemCards } = restro[0].groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
     //console.log(restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
    
-
-    const categories = restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    const categories = restaurantMenu?.cards[1]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
         (c) => 
             c.card?.card?.["@type"] === 
             "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
@@ -32,7 +32,6 @@ const Restaurantmenu = () => {
         setShowOnlyVeg(!showOnlyVeg);
     }
 
-    //To-Do
     const getCartItemsCount = () => {
         let itemsData = [];
         cartItems.forEach(element => {
@@ -50,12 +49,12 @@ const Restaurantmenu = () => {
     }
 
     return(
-        <div className='text-center'>
-            <h1 className='font-bold my-6 text-2xl'>{name}</h1>
-            <p className='text-lg'>
+        <div className='text-center md:text-base text-[9px]'>
+            <h1 className='font-bold my-6 md:text-2xl text-xs'>{name}</h1>
+            <p className='md:text-lg text-[9px]'>
                 {cuisines.join(", ")} - {costForTwoMessage}
             </p>
-            <div className="w-6/12 mx-auto my-4 p-4 text-left">
+            <div className="md:w-6/12 w-10/12 mx-auto my-4 p-4 text-left">
                 <label className="inline-block pl-[0.15rem] hover:cursor-pointer mr-2 font-bold" 
                     >Veg Only</label>
                 <input
@@ -67,7 +66,7 @@ const Restaurantmenu = () => {
                 
                 { (cartItems.length!=0) && 
                    <Link to="/cart">
-                        <button className='bg-[#60b246] float-end text-white py-2 px-2 mx-2 w-64 font-bold rounded-lg'>
+                        <button className='bg-[#60b246] float-end text-white py-2 px-2 mx-2 md:w-64 w-40 font-bold rounded-lg'>
                             <span className='float-start'>{ getCartItemsCount() } | ₹{totalCartPrice()}</span>
                             <div className="float-end">
                                 <span className="px-2">VIEW CART</span>
@@ -77,7 +76,7 @@ const Restaurantmenu = () => {
                         </button>
                     </Link> }
             </div>
-            {categories.map((category, index) => (
+            { categories && categories.map((category, index) => (
                 <RestaurantCategory key={ category.card.card.title } data={ category?.card?.card } 
                     showItems={ index == showIndex ? true : false}
                     showOnlyVegs={showOnlyVeg}

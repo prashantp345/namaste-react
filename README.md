@@ -68,7 +68,7 @@ import { var_name } from 'path/to/file';
  (Full flow of user ..as soon as user start using app till leave app)
 
 ## Setting up tesing in our APP
-- Install Reacr testing Library
+- Install React testing Library
 - Installed jest
 - Installed Babel dependencies
 - Configurare Babel
